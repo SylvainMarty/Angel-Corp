@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://8t25ak3vjkfv"]
+
+[ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_38vlj"]
+[ext_resource type="Script" path="res://enemies/Enemy.gd" id="2_qxsap"]
+[ext_resource type="Resource" uid="uid://c2j000hchspwp" path="res://enemies/enemy_stats.tres" id="2_rvmfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1yuo"]
+size = Vector2(40, 40)
+
+[node name="Enemy" groups=["enemy"] instance=ExtResource("1_38vlj")]
+script = ExtResource("2_qxsap")
+movement_speed = 0.1
+character_attack_impulse = 100.0
+item_push_impulse = 10.0
+item_push_back_impulse = 0.2
+initial_stats = ExtResource("2_rvmfv")
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+position = Vector2(-20, -20)
+scale = Vector2(4, 4)
+color = Color(1, 0.329412, 0, 1)
+polygon = PackedVector2Array(0, 0, 0, 10, 10, 10, 10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_c1yuo")
+
+[node name="ShootingTimer" type="Timer" parent="." index="2"]
+autostart = true
+
+[node name="MovementTimer" type="Timer" parent="." index="3"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_ShootingTimer_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timer_timeout"]

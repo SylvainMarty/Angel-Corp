@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://vlnut4inq8q2"]
+
+[ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_u8sd3"]
+[ext_resource type="Script" path="res://projectiles/Projectile.gd" id="2_in0e3"]
+[ext_resource type="Resource" uid="uid://8ovdgbfu18o8" path="res://projectiles/projectile_stats.tres" id="3_2c2hn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_km78n"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1yuo"]
+size = Vector2(8, 20)
+
+[node name="Projectile" instance=ExtResource("1_u8sd3")]
+position = Vector2(0, 0)
+rotation = 1.57079
+collision_layer = 0
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_km78n")
+linear_damp = 0.0
+script = ExtResource("2_in0e3")
+speed = 100
+initial_stats = ExtResource("3_2c2hn")
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+position = Vector2(-4, -10)
+scale = Vector2(0.8, 2)
+color = Color(1, 0.329412, 0, 1)
+polygon = PackedVector2Array(0, 0, 0, 10, 5, 10, 10, 10, 10, 5, 10, 0, 5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_c1yuo")

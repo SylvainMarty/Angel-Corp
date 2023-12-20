@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://qn34pwjj8r5r"]
+
+[ext_resource type="Script" path="res://items/BaseItem.gd" id="1_nh0dm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50rwl"]
+friction = 40.0
+bounce = 10.0
+absorbent = true
+
+[node name="BaseItem" type="RigidBody2D"]
+position = Vector2(20, 20)
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_50rwl")
+linear_damp = 5.0
+script = ExtResource("1_nh0dm")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

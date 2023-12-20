@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdq0pf0lubahr"]
+
+[ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_ma36q"]
+[ext_resource type="Resource" uid="uid://tup4kj1fkapd" path="res://items/inert_item_stats.tres" id="2_b65jl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj4cs"]
+size = Vector2(40, 40)
+
+[node name="BlockItem" instance=ExtResource("1_ma36q")]
+initial_stats = ExtResource("2_b65jl")
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+position = Vector2(-20, -20)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(0, 0, 0, 10, 10, 10, 10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_oj4cs")

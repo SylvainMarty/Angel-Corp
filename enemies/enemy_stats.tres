@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://c2j000hchspwp"]
+
+[ext_resource type="Script" path="res://custom_resources/Stats.gd" id="1_283yh"]
+
+[resource]
+script = ExtResource("1_283yh")
+health_points = 150
+hit_stength_multiplier = 1.0
+hit_damage = 10
+hit_damage_multiplier = 1.0
