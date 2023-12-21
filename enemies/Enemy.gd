@@ -8,6 +8,9 @@ class_name Enemy
 
 @onready var projectile_template = preload("res://projectiles/projectile.tscn")
 
+func _ready():
+	$AnimatedSprite2D.play()
+
 func find_closest_target() -> Node2D:
 	var characters = get_tree().get_nodes_in_group("character")
 	return characters[0] if not characters.is_empty() else null
@@ -27,6 +30,8 @@ func advance_to_target():
 	var next_position = (closest_character.get_position() - position) * movement_speed
 	print("Enemy move to: ", str(next_position))
 	var collision = move_and_collide(next_position)
+	if collision:
+		play_attack_animation()
 	if collision and collision.get_collider() is Character:
 		var collider: Character = collision.get_collider()
 		collider.add_damage(round(
@@ -41,6 +46,9 @@ func advance_to_target():
 				collider.get_center_of_mass(), collision.get_travel().angle())
 		collider.apply_impulse(collision.get_travel().rotated(PI/2.0) * item_push_impulse)
 		apply_impulse(-collision.get_travel() * item_push_back_impulse)
+
+func play_attack_animation():
+	$AnimatedSprite2D.play("attack")
 
 #func _on_ShootingTimer_timer_timeout():
 	#shoot()

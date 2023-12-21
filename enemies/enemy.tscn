@@ -1,8 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://8t25ak3vjkfv"]
+[gd_scene load_steps=12 format=3 uid="uid://8t25ak3vjkfv"]
 
 [ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_38vlj"]
 [ext_resource type="Script" path="res://enemies/Enemy.gd" id="2_qxsap"]
 [ext_resource type="Resource" uid="uid://c2j000hchspwp" path="res://enemies/enemy_stats.tres" id="2_rvmfv"]
+[ext_resource type="Texture2D" uid="uid://d0p7lx0akrbmc" path="res://textures/tilemap.png" id="4_u4wrn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj4pd"]
+atlas = ExtResource("4_u4wrn")
+region = Rect2(0, 576, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pmf4"]
+atlas = ExtResource("4_u4wrn")
+region = Rect2(0, 704, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enw2h"]
+atlas = ExtResource("4_u4wrn")
+region = Rect2(128, 704, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8447"]
+atlas = ExtResource("4_u4wrn")
+region = Rect2(256, 704, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_438nd"]
+atlas = ExtResource("4_u4wrn")
+region = Rect2(0, 576, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5dg6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj4pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pmf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enw2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8447")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_438nd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1yuo"]
 size = Vector2(40, 40)
@@ -15,11 +64,11 @@ item_push_impulse = 10.0
 item_push_back_impulse = 0.2
 initial_stats = ExtResource("2_rvmfv")
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
-position = Vector2(-20, -20)
-scale = Vector2(4, 4)
-color = Color(1, 0.329412, 0, 1)
-polygon = PackedVector2Array(0, 0, 0, 10, 10, 10, 10, 0)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.3125, 0.3125)
+sprite_frames = SubResource("SpriteFrames_j5dg6")
+animation = &"attack"
+speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_c1yuo")

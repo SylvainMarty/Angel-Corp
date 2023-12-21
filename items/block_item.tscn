@@ -1,18 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdq0pf0lubahr"]
+[gd_scene load_steps=8 format=3 uid="uid://bdq0pf0lubahr"]
 
 [ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_ma36q"]
 [ext_resource type="Resource" uid="uid://tup4kj1fkapd" path="res://items/inert_item_stats.tres" id="2_b65jl"]
+[ext_resource type="Script" path="res://items/BlockItem.gd" id="2_xcibi"]
+[ext_resource type="Script" path="res://custom_resources/RandomColor.gd" id="3_e20jk"]
+[ext_resource type="Texture2D" uid="uid://d0p7lx0akrbmc" path="res://textures/tilemap.png" id="3_k7fq6"]
+
+[sub_resource type="Resource" id="Resource_ebmpw"]
+script = ExtResource("3_e20jk")
+red = 0.0
+green = 0.5
+blue = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj4cs"]
 size = Vector2(40, 40)
 
 [node name="BlockItem" instance=ExtResource("1_ma36q")]
+script = ExtResource("2_xcibi")
+random_color = SubResource("Resource_ebmpw")
 initial_stats = ExtResource("2_b65jl")
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
-position = Vector2(-20, -20)
-scale = Vector2(4, 4)
-polygon = PackedVector2Array(0, 0, 0, 10, 10, 10, 10, 0)
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("3_k7fq6")
+region_enabled = true
+region_rect = Rect2(512, 0, 128, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_oj4cs")

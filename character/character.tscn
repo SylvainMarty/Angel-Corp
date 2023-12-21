@@ -1,8 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtig727nyv4er"]
+[gd_scene load_steps=11 format=3 uid="uid://dtig727nyv4er"]
 
 [ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_mnph8"]
 [ext_resource type="Script" path="res://character/Character.gd" id="2_3g1ph"]
 [ext_resource type="Resource" uid="uid://bfpya6tv7l58c" path="res://character/character_stats.tres" id="2_25yji"]
+[ext_resource type="Texture2D" uid="uid://d0p7lx0akrbmc" path="res://textures/tilemap.png" id="4_5nbk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8lpw"]
+atlas = ExtResource("4_5nbk4")
+region = Rect2(0, 320, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkw4b"]
+atlas = ExtResource("4_5nbk4")
+region = Rect2(128, 320, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si2nh"]
+atlas = ExtResource("4_5nbk4")
+region = Rect2(256, 320, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxhlp"]
+atlas = ExtResource("4_5nbk4")
+region = Rect2(384, 320, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ypujl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8lpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkw4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si2nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxhlp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1yuo"]
 size = Vector2(40, 40)
@@ -11,11 +48,11 @@ size = Vector2(40, 40)
 script = ExtResource("2_3g1ph")
 initial_stats = ExtResource("2_25yji")
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
-position = Vector2(-20, -20)
-scale = Vector2(4, 4)
-color = Color(0, 0.784314, 0.603922, 1)
-polygon = PackedVector2Array(0, 0, 0, 10, 10, 10, 10, 0)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.3125, 0.3125)
+sprite_frames = SubResource("SpriteFrames_ypujl")
+frame_progress = 0.139301
+speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_c1yuo")
