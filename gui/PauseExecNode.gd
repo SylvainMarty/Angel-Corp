@@ -6,7 +6,7 @@ extends Node
 var disabled: bool = false
 var debounce: bool = false
 
-func _process(delta):
+func _process(_delta):
 	if not disabled and Input.is_action_pressed("ui_cancel"):
 		toggle_and_wait()
 

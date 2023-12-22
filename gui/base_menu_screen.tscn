@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpdm0175meuq4"]
+[gd_scene load_steps=4 format=3 uid="uid://cpdm0175meuq4"]
 
 [ext_resource type="SystemFont" uid="uid://d30tlksoa36cm" path="res://gui/theme/font.tres" id="1_nfgns"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ej2mh"]
 font = ExtResource("1_nfgns")
 font_size = 54
+
+[sub_resource type="LabelSettings" id="LabelSettings_sgcth"]
+font = ExtResource("1_nfgns")
 
 [node name="BaseMenuScreen" type="Node2D"]
 process_mode = 2
@@ -29,5 +32,15 @@ offset_right = 1024.0
 offset_bottom = 192.0
 text = "Angel Corp"
 label_settings = SubResource("LabelSettings_ej2mh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreatedBy" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 664.0
+offset_right = 1024.0
+offset_bottom = 703.0
+text = "Created by Sylvanoux - IGDB Beginner's Jam December 2023"
+label_settings = SubResource("LabelSettings_sgcth")
 horizontal_alignment = 1
 vertical_alignment = 1

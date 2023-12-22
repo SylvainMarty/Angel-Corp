@@ -10,7 +10,7 @@ func _ready():
 	if not show_remaining_health:
 		$RemainingHealth.queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if show_remaining_health:
 		remaining_health_label.text = str(AngelCorpScore.remaining_health)
 	remaining_char_count_label.text = str(AngelCorpScore.remaining_characters)

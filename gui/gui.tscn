@@ -152,12 +152,13 @@ texture = ExtResource("4_vqisw")
 region_enabled = true
 region_rect = Rect2(64, 0, 64, 64)
 
-[node name="MainMenuScreen" parent="." instance=ExtResource("4_r2jkg")]
+[node name="PauseMenuScreen" parent="." instance=ExtResource("4_r2jkg")]
+visible = false
 
-[node name="GameStats" parent="MainMenuScreen" instance=ExtResource("7_5d1hg")]
+[node name="GameStats" parent="PauseMenuScreen" instance=ExtResource("7_5d1hg")]
 position = Vector2(408, 240)
 
-[node name="ResumeGameBtn" type="Button" parent="MainMenuScreen"]
+[node name="ResumeGameBtn" type="Button" parent="PauseMenuScreen"]
 offset_left = 544.0
 offset_top = 400.0
 offset_right = 736.0
@@ -165,7 +166,7 @@ offset_bottom = 432.0
 theme = ExtResource("3_s0kc2")
 text = "Resume game"
 
-[node name="RestartGameBtn" type="Button" parent="MainMenuScreen"]
+[node name="RestartGameBtn" type="Button" parent="PauseMenuScreen"]
 offset_left = 544.0
 offset_top = 464.0
 offset_right = 736.0
@@ -173,7 +174,7 @@ offset_bottom = 496.0
 theme = ExtResource("3_s0kc2")
 text = "Restart game"
 
-[node name="QuitGameBtn" type="Button" parent="MainMenuScreen"]
+[node name="QuitGameBtn" type="Button" parent="PauseMenuScreen"]
 offset_left = 544.0
 offset_top = 528.0
 offset_right = 736.0
@@ -181,7 +182,7 @@ offset_bottom = 560.0
 theme = ExtResource("3_s0kc2")
 text = "Quit game"
 
-[node name="CreatedBy" type="Label" parent="MainMenuScreen"]
+[node name="CreatedBy2" type="Label" parent="PauseMenuScreen"]
 offset_left = 256.0
 offset_top = 664.0
 offset_right = 1024.0
@@ -197,6 +198,28 @@ visible = false
 [node name="GameStats" parent="EndGameScreen" instance=ExtResource("7_5d1hg")]
 position = Vector2(344, 352)
 show_remaining_health = false
+
+[node name="Title" type="Label" parent="EndGameScreen"]
+offset_left = 384.0
+offset_top = 192.0
+offset_right = 897.0
+offset_bottom = 256.0
+size_flags_horizontal = 0
+text = "All your protegés are dead!"
+label_settings = SubResource("LabelSettings_fmraw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="EndGameScreen"]
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 832.0
+offset_bottom = 320.0
+size_flags_horizontal = 0
+text = "You had one job, god damn it."
+label_settings = SubResource("LabelSettings_1wsyn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RestartGameBtn" type="Button" parent="EndGameScreen"]
 offset_left = 544.0
@@ -216,30 +239,8 @@ size_flags_horizontal = 0
 theme = ExtResource("3_s0kc2")
 text = "Quit game"
 
-[node name="Label" type="Label" parent="EndGameScreen"]
-offset_left = 384.0
-offset_top = 192.0
-offset_right = 897.0
-offset_bottom = 256.0
-size_flags_horizontal = 0
-text = "All your protegés are dead!"
-label_settings = SubResource("LabelSettings_fmraw")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="EndGameScreen"]
-offset_left = 448.0
-offset_top = 256.0
-offset_right = 832.0
-offset_bottom = 320.0
-size_flags_horizontal = 0
-text = "You had one job, god damn it."
-label_settings = SubResource("LabelSettings_1wsyn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="MainMenuScreen/ResumeGameBtn" to="." method="_on_resume_game_btn_pressed"]
-[connection signal="pressed" from="MainMenuScreen/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]
-[connection signal="pressed" from="MainMenuScreen/QuitGameBtn" to="." method="_on_quit_game_btn_pressed"]
+[connection signal="pressed" from="PauseMenuScreen/ResumeGameBtn" to="." method="_on_resume_game_btn_pressed"]
+[connection signal="pressed" from="PauseMenuScreen/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]
+[connection signal="pressed" from="PauseMenuScreen/QuitGameBtn" to="." method="_on_quit_game_btn_pressed"]
 [connection signal="pressed" from="EndGameScreen/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]
 [connection signal="pressed" from="EndGameScreen/QuitGameBtn" to="." method="_on_quit_game_btn_pressed"]

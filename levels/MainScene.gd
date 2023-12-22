@@ -6,10 +6,10 @@ func _ready():
 	var characters = get_tree().get_nodes_in_group("character")
 	var remaining_health = 0
 	var remaining_characters = 0
-	for char in characters:
-		remaining_health += char.get_stats().health_points
-		char.item_hit.connect(_on_character_hit)
-		char.item_died.connect(_on_character_died)
+	for chararacter in characters:
+		remaining_health += chararacter.get_stats().health_points
+		chararacter.item_hit.connect(_on_character_hit)
+		chararacter.item_died.connect(_on_character_died)
 		remaining_characters += 1
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enem in enemies:
