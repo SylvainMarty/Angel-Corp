@@ -1,0 +1,308 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0c0flsaruy18"]
+
+[ext_resource type="Texture2D" uid="uid://ibj7kf5e4mhw" path="res://textures/icons_tilemap.png" id="1_37umf"]
+[ext_resource type="Script" path="res://gui/Gui.gd" id="1_q4xcg"]
+[ext_resource type="Script" path="res://gui/PauseExecNode.gd" id="2_3u3j3"]
+[ext_resource type="SystemFont" uid="uid://d30tlksoa36cm" path="res://gui/theme/font.tres" id="3_dptg1"]
+[ext_resource type="Theme" uid="uid://3142j4y0cfsc" path="res://gui/theme/gui_theme.tres" id="3_s0kc2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ej2mh"]
+font = ExtResource("3_dptg1")
+font_size = 54
+
+[sub_resource type="LabelSettings" id="LabelSettings_mj38i"]
+font = ExtResource("3_dptg1")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_8e61b"]
+font = ExtResource("3_dptg1")
+
+[node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("remaining_health_label", "remaining_char_count_label", "kill_count_label")]
+script = ExtResource("1_q4xcg")
+remaining_health_label = NodePath("HUD/RemainingHealth")
+remaining_char_count_label = NodePath("HUD/RemainingCharactersCount")
+kill_count_label = NodePath("HUD/KillCount")
+
+[node name="PauseExecNode" type="Node" parent="." node_paths=PackedStringArray("gui")]
+process_mode = 3
+script = ExtResource("2_3u3j3")
+gui = NodePath("..")
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="HUD"]
+anchors_preset = -1
+anchor_right = 0.04375
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text2" type="Label" parent="HUD"]
+visible = false
+anchors_preset = -1
+anchor_left = -3.58896
+anchor_top = -0.333333
+anchor_right = -3.58896
+anchor_bottom = -0.291667
+offset_left = 8.00146
+offset_top = 8.00024
+offset_right = 47.0015
+offset_bottom = 31.0002
+text = "Lives"
+metadata/_edit_use_anchors_ = true
+
+[node name="RemainingCharactersCount" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = -1.19042
+anchor_top = -1.8
+anchor_right = -1.11126
+anchor_bottom = -1.75833
+offset_left = 96.0023
+offset_top = 8.0
+offset_right = 124.002
+offset_bottom = 31.0
+size_flags_horizontal = 8
+text = "123"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterSprite" type="Sprite2D" parent="HUD"]
+position = Vector2(28, 20)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_37umf")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+anchors_preset = -1
+anchor_right = 0.04375
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 128.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="HUD"]
+visible = false
+anchors_preset = -1
+anchor_left = -3.58896
+anchor_top = -0.333333
+anchor_right = -3.58896
+anchor_bottom = -0.291667
+offset_left = 8.00146
+offset_top = 40.0002
+offset_right = 60.0015
+offset_bottom = 63.0002
+text = "Health"
+metadata/_edit_use_anchors_ = true
+
+[node name="RemainingHealth" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = -1.33001
+anchor_top = -1.8
+anchor_right = -1.29251
+anchor_bottom = -1.79861
+offset_left = 95.9972
+offset_top = 40.0
+offset_right = 135.997
+offset_bottom = 63.0
+size_flags_horizontal = 8
+text = "123"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HeartSprite" type="Sprite2D" parent="HUD"]
+position = Vector2(28, 52)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_37umf")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="ColorRect3" type="ColorRect" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.000102615
+anchor_right = 0.0438526
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 128.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Text3" type="Label" parent="HUD"]
+visible = false
+anchors_preset = -1
+anchor_left = -3.58896
+anchor_top = -0.333333
+anchor_right = -3.58896
+anchor_bottom = -0.291667
+offset_left = 8.00146
+offset_top = 72.0002
+offset_right = 60.0015
+offset_bottom = 95.0002
+text = "Kills"
+metadata/_edit_use_anchors_ = true
+
+[node name="KillCount" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = -1.3299
+anchor_top = -1.8
+anchor_right = -1.2924
+anchor_bottom = -1.79861
+offset_left = 96.0081
+offset_top = 72.0
+offset_right = 136.008
+offset_bottom = 95.0
+size_flags_horizontal = 8
+text = "123"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SkullSprite" type="Sprite2D" parent="HUD"]
+position = Vector2(28, 84)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_37umf")
+region_enabled = true
+region_rect = Rect2(64, 0, 64, 64)
+
+[node name="MainMenuScreen" type="Node2D" parent="."]
+process_mode = 2
+process_priority = 1
+visible = false
+
+[node name="Overlay" type="ColorRect" parent="MainMenuScreen"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Background" type="ColorRect" parent="MainMenuScreen"]
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 1)
+
+[node name="MainTitle" type="Label" parent="MainMenuScreen"]
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 192.0
+text = "Angel Corp"
+label_settings = SubResource("LabelSettings_ej2mh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterSprite" type="Sprite2D" parent="MainMenuScreen"]
+position = Vector2(512, 260)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_37umf")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
+
+[node name="CharactersSaved" type="Label" parent="MainMenuScreen"]
+offset_left = 472.0
+offset_top = 276.0
+offset_right = 552.0
+offset_bottom = 308.0
+text = "123"
+label_settings = SubResource("LabelSettings_mj38i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterSprite2" type="Sprite2D" parent="MainMenuScreen"]
+position = Vector2(640, 260)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_37umf")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
+
+[node name="CharacterSaved2" type="Label" parent="MainMenuScreen"]
+offset_left = 600.0
+offset_top = 276.0
+offset_right = 680.0
+offset_bottom = 308.0
+text = "123"
+label_settings = SubResource("LabelSettings_mj38i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterSprite3" type="Sprite2D" parent="MainMenuScreen"]
+position = Vector2(768, 260)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_37umf")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
+
+[node name="CharacterSaved3" type="Label" parent="MainMenuScreen"]
+offset_left = 728.0
+offset_top = 276.0
+offset_right = 808.0
+offset_bottom = 308.0
+text = "123"
+label_settings = SubResource("LabelSettings_mj38i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeGameBtn" type="Button" parent="MainMenuScreen"]
+offset_left = 536.0
+offset_top = 400.0
+offset_right = 728.0
+offset_bottom = 432.0
+theme = ExtResource("3_s0kc2")
+text = "Resume game"
+
+[node name="RestartGameBtn" type="Button" parent="MainMenuScreen"]
+offset_left = 536.0
+offset_top = 464.0
+offset_right = 728.0
+offset_bottom = 496.0
+theme = ExtResource("3_s0kc2")
+text = "Restart game"
+
+[node name="QuitGameBtn" type="Button" parent="MainMenuScreen"]
+offset_left = 536.0
+offset_top = 528.0
+offset_right = 728.0
+offset_bottom = 560.0
+theme = ExtResource("3_s0kc2")
+text = "Quit game"
+
+[node name="CreatedBy" type="Label" parent="MainMenuScreen"]
+offset_left = 256.0
+offset_top = 608.0
+offset_right = 1024.0
+offset_bottom = 631.0
+text = "Created by Sylvanoux - IGDB Beginner's Jam December 2023"
+label_settings = SubResource("LabelSettings_8e61b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MainMenuScreen"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_s0kc2")
+
+[node name="EndGameScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="EndGameScreen"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RestartButton" type="Button" parent="EndGameScreen/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="MainMenuScreen/ResumeGameBtn" to="." method="_on_resume_game_btn_pressed"]
+[connection signal="pressed" from="MainMenuScreen/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]
+[connection signal="pressed" from="MainMenuScreen/QuitGameBtn" to="." method="_on_quit_game_btn_pressed"]
