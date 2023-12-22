@@ -11,6 +11,7 @@ signal projectile_hit(damages_avoided: int)
 
 @onready var stats: Stats = initial_stats.duplicate()
 @onready var damage_number_template = preload("res://items/DamageNumber.tscn")
+@onready var collision_sound_player = $CollisionSoundPlayer
 
 const DAMAGE_NUMBER_HEIGHT := 200.0
 const DAMAGE_NUMBER_SPREAD := 50.0
@@ -31,6 +32,7 @@ func get_stats() -> Stats:
 func move_item_and_collide(delta, target_position: Vector2):
 	var collision = move_and_collide(mouse_spring_constant * target_position * delta)
 	if collision and collision.get_collider() is BaseItem:
+		collision_sound_player.play()
 		var collider: BaseItem = collision.get_collider()
 		collider.apply_impulse(collision.get_travel() * inertia_factor * delta)
 		# get_viewport().warp_mouse(get_local_mouse_position() * Vector2(10.0, 10.0) * delta)

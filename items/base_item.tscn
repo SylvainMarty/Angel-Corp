@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://qn34pwjj8r5r"]
+[gd_scene load_steps=4 format=3 uid="uid://qn34pwjj8r5r"]
 
 [ext_resource type="Script" path="res://items/BaseItem.gd" id="1_nh0dm"]
+[ext_resource type="AudioStream" uid="uid://cn7etcnapmlbr" path="res://sounds/bonk-sound.wav" id="2_qhuo5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_50rwl"]
 friction = 40.0
@@ -13,5 +14,8 @@ input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_50rwl")
 linear_damp = 5.0
 script = ExtResource("1_nh0dm")
+
+[node name="CollisionSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qhuo5")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
