@@ -49,6 +49,8 @@ func _on_restart_game_btn_pressed():
 func _on_quit_game_btn_pressed():
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
+	if JavaScriptBridge:
+		JavaScriptBridge.eval("window.close()")
 
 func _on_start_game_btn_pressed():
 	pause_exec_node.disabled = false

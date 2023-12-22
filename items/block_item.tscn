@@ -1,16 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdq0pf0lubahr"]
+[gd_scene load_steps=15 format=3 uid="uid://bdq0pf0lubahr"]
 
 [ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_ma36q"]
 [ext_resource type="Resource" uid="uid://tup4kj1fkapd" path="res://items/inert_item_stats.tres" id="2_b65jl"]
 [ext_resource type="Script" path="res://items/BlockItem.gd" id="2_xcibi"]
 [ext_resource type="Script" path="res://custom_resources/RandomColor.gd" id="3_e20jk"]
 [ext_resource type="Texture2D" uid="uid://d0p7lx0akrbmc" path="res://textures/tilemap.png" id="3_k7fq6"]
+[ext_resource type="Texture2D" uid="uid://cydgqkca4f6nr" path="res://textures/tilemap_compressed_texture_2d.tres" id="6_e6tww"]
+[ext_resource type="Texture2D" uid="uid://bv3niaegyqg1u" path="res://textures/tilemap_n.png" id="7_0j32i"]
+[ext_resource type="Texture2D" uid="uid://co7plqjpkuclk" path="res://textures/tilemap_s.png" id="8_tkf82"]
 
 [sub_resource type="Resource" id="Resource_ebmpw"]
 script = ExtResource("3_e20jk")
 red = 0.0
 green = 0.5
 blue = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ugf7j"]
+polygon = PackedVector2Array(-20, 20, 12, 20, 20, 12, 20, -20, -12, -20, -20, -12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1i58"]
+atlas = ExtResource("7_0j32i")
+region = Rect2(520, 0, 120, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygs0u"]
+atlas = ExtResource("8_tkf82")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7h425"]
+diffuse_texture = ExtResource("6_e6tww")
+normal_texture = SubResource("AtlasTexture_n1i58")
+specular_texture = SubResource("AtlasTexture_ygs0u")
+specular_shininess = 0.85
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj4cs"]
 size = Vector2(40, 40)
@@ -20,11 +40,24 @@ script = ExtResource("2_xcibi")
 random_color = SubResource("Resource_ebmpw")
 initial_stats = ExtResource("2_b65jl")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="0"]
+process_mode = 4
+visible = false
+occluder = SubResource("OccluderPolygon2D_ugf7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("3_k7fq6")
 region_enabled = true
 region_rect = Rect2(512, 0, 128, 128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="Sprite2DWithNormalSpecular" type="Sprite2D" parent="." index="2"]
+process_mode = 4
+visible = false
+scale = Vector2(0.3125, 0.3125)
+texture = SubResource("CanvasTexture_7h425")
+region_enabled = true
+region_rect = Rect2(512, 0, 128, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 shape = SubResource("RectangleShape2D_oj4cs")

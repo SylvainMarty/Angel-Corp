@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://6q2oayw0s2a6"]
+[gd_scene load_steps=8 format=3 uid="uid://6q2oayw0s2a6"]
 
 [ext_resource type="Script" path="res://levels/MainScene.gd" id="1_g5f7m"]
 [ext_resource type="TileSet" uid="uid://ddyeeucafrg2c" path="res://textures/tilemap.tres" id="2_ydki3"]
 [ext_resource type="PackedScene" uid="uid://d0c0flsaruy18" path="res://gui/gui.tscn" id="3_1vojr"]
+[ext_resource type="PackedScene" uid="uid://crrn2q5l8m7s7" path="res://lights/global_light.tscn" id="3_w2lmg"]
 [ext_resource type="PackedScene" uid="uid://bdq0pf0lubahr" path="res://items/block_item.tscn" id="4_6blyu"]
 [ext_resource type="PackedScene" uid="uid://dtig727nyv4er" path="res://character/character.tscn" id="5_ixewu"]
 [ext_resource type="PackedScene" uid="uid://8t25ak3vjkfv" path="res://enemies/enemy.tscn" id="6_3earn"]
@@ -20,6 +21,8 @@ layer_0/tile_data = PackedInt32Array(65537, 1310721, 8, 655378, 1835009, 16, 655
 layer_1/name = "Walls"
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array(0, 524289, 8, 19, 1048577, 8, 720896, 524289, 16, 720915, 1048577, 16, 720914, 786433, 16, 720913, 786433, 16, 720912, 786433, 16, 720911, 786433, 16, 720910, 786433, 16, 720909, 786433, 16, 720908, 786433, 16, 720907, 786433, 16, 720906, 786433, 16, 720905, 786433, 16, 720904, 786433, 16, 720903, 786433, 16, 720902, 786433, 16, 720901, 786433, 16, 720900, 786433, 16, 720899, 786433, 16, 720898, 786433, 16, 720897, 786433, 16, 65555, 1048577, 12, 131091, 1048577, 12, 196627, 1048577, 12, 262163, 1048577, 12, 327699, 1048577, 12, 393235, 1048577, 12, 458771, 1048577, 12, 524307, 1048577, 12, 589843, 1048577, 12, 655379, 1048577, 12, 1, 786433, 8, 2, 786433, 8, 3, 786433, 8, 4, 786433, 8, 5, 786433, 8, 6, 786433, 8, 7, 786433, 8, 8, 786433, 8, 9, 786433, 8, 10, 786433, 8, 11, 786433, 8, 12, 786433, 8, 13, 786433, 8, 14, 786433, 8, 15, 786433, 8, 16, 786433, 8, 17, 786433, 8, 18, 786433, 8, 655360, 524289, 12, 589824, 524289, 12, 524288, 524289, 12, 458752, 524289, 12, 393216, 524289, 12, 327680, 524289, 12, 262144, 524289, 12, 196608, 524289, 12, 131072, 524289, 12, 65536, 524289, 12)
+
+[node name="GlobalLight" parent="." instance=ExtResource("3_w2lmg")]
 
 [node name="GUI" parent="." instance=ExtResource("3_1vojr")]
 

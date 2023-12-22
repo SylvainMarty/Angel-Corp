@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://crrn2q5l8m7s7"]
+
+[sub_resource type="Gradient" id="Gradient_g46dm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.826531)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4tywa"]
+gradient = SubResource("Gradient_g46dm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+repeat = 2
+metadata/_snap_enabled = true
+
+[node name="GlobalLight" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 5
+position = Vector2(632, 360)
+scale = Vector2(20, 12)
+shadow_filter_smooth = 16.0
+texture = SubResource("GradientTexture2D_4tywa")
+height = 512.0
