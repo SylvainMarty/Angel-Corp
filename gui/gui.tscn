@@ -38,119 +38,110 @@ money_label = NodePath("MoneyHUD/Money")
 [node name="CharacterHUD" type="Node2D" parent="HUD"]
 
 [node name="Background" type="ColorRect" parent="HUD/CharacterHUD"]
-anchors_preset = -1
-anchor_right = 0.04375
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 128.0
-offset_bottom = 32.0
+offset_bottom = 48.0
 color = Color(0, 0, 0, 0.694118)
-metadata/_edit_use_anchors_ = true
 
 [node name="RemainingCharactersCount" type="Label" parent="HUD/CharacterHUD"]
 offset_left = 80.0
-offset_top = 8.0
+offset_top = 16.0
 offset_right = 120.0
-offset_bottom = 32.0
+offset_bottom = 40.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSprite" type="Sprite2D" parent="HUD/CharacterHUD"]
-position = Vector2(28, 20)
-scale = Vector2(0.375, 0.375)
+position = Vector2(28, 28)
+scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("4_vqisw")
 region_enabled = true
-region_rect = Rect2(128, 0, 64, 64)
+region_rect = Rect2(0, 128, 128, 128)
 
 [node name="RemainingHealthHUD" type="Node2D" parent="HUD"]
 
 [node name="Background" type="ColorRect" parent="HUD/RemainingHealthHUD"]
-anchors_preset = -1
-anchor_right = 0.04375
 offset_left = 8.0
-offset_top = 40.0
+offset_top = 56.0
 offset_right = 128.0
-offset_bottom = 64.0
+offset_bottom = 96.0
 color = Color(0, 0, 0, 0.694118)
-metadata/_edit_use_anchors_ = true
 
 [node name="RemainingHealth" type="Label" parent="HUD/RemainingHealthHUD"]
 offset_left = 80.0
-offset_top = 40.0
+offset_top = 64.0
 offset_right = 120.0
-offset_bottom = 64.0
+offset_bottom = 88.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HeartSprite" type="Sprite2D" parent="HUD/RemainingHealthHUD"]
-position = Vector2(28, 52)
-scale = Vector2(0.375, 0.375)
+position = Vector2(28, 76)
+scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("4_vqisw")
 region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
+region_rect = Rect2(0, 0, 128, 128)
 
 [node name="KillCountHUD" type="Node2D" parent="HUD"]
 
 [node name="Background" type="ColorRect" parent="HUD/KillCountHUD"]
-anchors_preset = -1
-anchor_left = 0.000102615
-anchor_right = 0.0438526
 offset_left = 8.0
-offset_top = 72.0
+offset_top = 104.0
 offset_right = 128.0
-offset_bottom = 96.0
+offset_bottom = 144.0
 color = Color(0, 0, 0, 0.694118)
-metadata/_edit_use_anchors_ = true
 
 [node name="KillCount" type="Label" parent="HUD/KillCountHUD"]
 offset_left = 80.0
-offset_top = 72.0
+offset_top = 112.0
 offset_right = 120.0
-offset_bottom = 96.0
+offset_bottom = 136.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SkullSprite" type="Sprite2D" parent="HUD/KillCountHUD"]
-position = Vector2(28, 84)
-scale = Vector2(0.375, 0.375)
+position = Vector2(28, 124)
+scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("4_vqisw")
 region_enabled = true
-region_rect = Rect2(64, 0, 64, 64)
+region_rect = Rect2(512, 320, 128, 128)
 
 [node name="MoneyHUD" type="Node2D" parent="HUD"]
 
 [node name="Background" type="ColorRect" parent="HUD/MoneyHUD"]
-anchors_preset = -1
-anchor_left = 0.000102615
-anchor_right = 0.0438526
 offset_left = 8.0
-offset_top = 104.0
+offset_top = 152.0
 offset_right = 128.0
-offset_bottom = 128.0
+offset_bottom = 192.0
 color = Color(0, 0, 0, 0.694118)
 
 [node name="Money" type="Label" parent="HUD/MoneyHUD"]
 offset_left = 80.0
-offset_top = 104.0
+offset_top = 160.0
 offset_right = 120.0
-offset_bottom = 128.0
+offset_bottom = 184.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="MoneySprite" type="Sprite2D" parent="HUD/MoneyHUD"]
-position = Vector2(28, 116)
-scale = Vector2(0.375, 0.375)
+position = Vector2(28, 172)
+scale = Vector2(0.125654, 0.125654)
 texture = ExtResource("4_vqisw")
 region_enabled = true
-region_rect = Rect2(64, 0, 64, 64)
+region_rect = Rect2(512, 128, 192, 191.647)
 
 [node name="PauseMenuScreen" parent="." instance=ExtResource("4_r2jkg")]
 visible = false

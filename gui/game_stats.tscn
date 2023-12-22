@@ -18,11 +18,11 @@ money_label = NodePath("Money/Money")
 [node name="RemainingHealth" type="Node2D" parent="."]
 
 [node name="RemainingHealthSprite" type="Sprite2D" parent="RemainingHealth"]
-position = Vector2(40, 12)
+position = Vector2(40, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_gbaun")
 region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
+region_rect = Rect2(0, 0, 128, 128)
 
 [node name="RemainingHealth" type="Label" parent="RemainingHealth"]
 offset_top = 28.0
@@ -37,11 +37,11 @@ metadata/_edit_use_anchors_ = true
 [node name="RemainingCharacters" type="Node2D" parent="."]
 
 [node name="RemainingCharCountSprite" type="Sprite2D" parent="RemainingCharacters"]
-position = Vector2(168, 12)
+position = Vector2(168, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_gbaun")
 region_enabled = true
-region_rect = Rect2(128, 0, 64, 64)
+region_rect = Rect2(0, 128, 128, 128)
 
 [node name="RemainingCharCount" type="Label" parent="RemainingCharacters"]
 offset_left = 128.0
@@ -57,11 +57,11 @@ metadata/_edit_use_anchors_ = true
 [node name="KillCount" type="Node2D" parent="."]
 
 [node name="KillCountSprite" type="Sprite2D" parent="KillCount"]
-position = Vector2(296, 12)
+position = Vector2(296, 0)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_gbaun")
 region_enabled = true
-region_rect = Rect2(64, 0, 64, 64)
+region_rect = Rect2(512, 320, 128, 128)
 
 [node name="KillCount" type="Label" parent="KillCount"]
 offset_left = 256.0
@@ -77,11 +77,11 @@ metadata/_edit_use_anchors_ = true
 [node name="Money" type="Node2D" parent="."]
 
 [node name="MoneySprite" type="Sprite2D" parent="Money"]
-position = Vector2(424, 12)
-scale = Vector2(0.375, 0.375)
+position = Vector2(424, 4.54747e-13)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_gbaun")
 region_enabled = true
-region_rect = Rect2(512, 24, 64, 64)
+region_rect = Rect2(512, 128, 192, 191.755)
 
 [node name="Money" type="Label" parent="Money"]
 offset_left = 384.0
