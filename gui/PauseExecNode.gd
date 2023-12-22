@@ -3,10 +3,11 @@ extends Node
 @export var gui: GUI
 @export var debounce_time: float = 0.5
 
+var disabled: bool = false
 var debounce: bool = false
 
 func _process(delta):
-	if Input.is_action_pressed("ui_cancel"):
+	if not disabled and Input.is_action_pressed("ui_cancel"):
 		toggle_and_wait()
 
 func toggle_and_wait():

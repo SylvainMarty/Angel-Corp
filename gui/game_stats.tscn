@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr4v32bjm6erp"]
+
+[ext_resource type="Script" path="res://gui/GameStats.gd" id="1_gb8qj"]
+[ext_resource type="Texture2D" uid="uid://cydgqkca4f6nr" path="res://textures/tilemap_compressed_texture_2d.tres" id="1_gbaun"]
+[ext_resource type="SystemFont" uid="uid://d30tlksoa36cm" path="res://gui/theme/font.tres" id="2_odxtn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yy3gk"]
+font = ExtResource("2_odxtn")
+font_size = 20
+
+[node name="GameStats" type="Node2D" node_paths=PackedStringArray("remaining_health_label", "remaining_char_count_label", "kill_count_label", "money_label")]
+script = ExtResource("1_gb8qj")
+remaining_health_label = NodePath("RemainingHealth/RemainingHealth")
+remaining_char_count_label = NodePath("RemainingCharacters/RemainingCharCount")
+kill_count_label = NodePath("KillCount/KillCount")
+money_label = NodePath("Money/Money")
+
+[node name="RemainingHealth" type="Node2D" parent="."]
+
+[node name="RemainingHealthSprite" type="Sprite2D" parent="RemainingHealth"]
+position = Vector2(40, 12)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_gbaun")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="RemainingHealth" type="Label" parent="RemainingHealth"]
+offset_top = 28.0
+offset_right = 80.0
+offset_bottom = 60.0
+text = "123"
+label_settings = SubResource("LabelSettings_yy3gk")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RemainingCharacters" type="Node2D" parent="."]
+
+[node name="RemainingCharCountSprite" type="Sprite2D" parent="RemainingCharacters"]
+position = Vector2(168, 12)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_gbaun")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
+
+[node name="RemainingCharCount" type="Label" parent="RemainingCharacters"]
+offset_left = 128.0
+offset_top = 28.0
+offset_right = 208.0
+offset_bottom = 60.0
+text = "123"
+label_settings = SubResource("LabelSettings_yy3gk")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="KillCount" type="Node2D" parent="."]
+
+[node name="KillCountSprite" type="Sprite2D" parent="KillCount"]
+position = Vector2(296, 12)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_gbaun")
+region_enabled = true
+region_rect = Rect2(64, 0, 64, 64)
+
+[node name="KillCount" type="Label" parent="KillCount"]
+offset_left = 256.0
+offset_top = 28.0
+offset_right = 336.0
+offset_bottom = 60.0
+text = "123"
+label_settings = SubResource("LabelSettings_yy3gk")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Node2D" parent="."]
+
+[node name="MoneySprite" type="Sprite2D" parent="Money"]
+position = Vector2(424, 12)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("1_gbaun")
+region_enabled = true
+region_rect = Rect2(512, 24, 64, 64)
+
+[node name="Money" type="Label" parent="Money"]
+offset_left = 384.0
+offset_top = 28.0
+offset_right = 464.0
+offset_bottom = 60.0
+text = "123"
+label_settings = SubResource("LabelSettings_yy3gk")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

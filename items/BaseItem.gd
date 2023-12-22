@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name BaseItem
 
-signal item_died
+signal item_died(dropped_money: int)
 signal item_hit(damages: int)
 signal projectile_hit(damages_avoided: int)
 
@@ -52,7 +52,7 @@ func _process(delta):
 		move_item_and_collide(delta, get_local_mouse_position())
 	if stats.health_points <= 0:
 		print("["+name+"] died")
-		item_died.emit()
+		item_died.emit(stats.get_random_dropped_money())
 		# TODO: add animation
 		queue_free()
 
