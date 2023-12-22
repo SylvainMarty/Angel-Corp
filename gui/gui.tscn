@@ -147,7 +147,7 @@ region_rect = Rect2(512, 128, 192, 191.647)
 visible = false
 
 [node name="GameStats" parent="PauseMenuScreen" instance=ExtResource("7_5d1hg")]
-position = Vector2(408, 240)
+position = Vector2(408, 272)
 
 [node name="ResumeGameBtn" type="Button" parent="PauseMenuScreen"]
 offset_left = 544.0
@@ -187,7 +187,7 @@ vertical_alignment = 1
 visible = false
 
 [node name="GameStats" parent="EndGameScreen" instance=ExtResource("7_5d1hg")]
-position = Vector2(344, 352)
+position = Vector2(344, 368)
 show_remaining_health = false
 
 [node name="Title" type="Label" parent="EndGameScreen"]
