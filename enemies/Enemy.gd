@@ -14,8 +14,17 @@ func _ready():
 	animated_sprite.play()
 
 func find_closest_target() -> Node2D:
-	var characters = get_tree().get_nodes_in_group("character")
-	return characters[0] if not characters.is_empty() else null
+	var characters: Array = get_tree().get_nodes_in_group("character")
+	if characters.is_empty():
+		return null
+	var min_distance = characters[0].position.distance_to(position)
+	var min_distance_char = characters[0]
+	for character in characters:
+		var distance_from_char = character.position.distance_to(position)
+		if distance_from_char < min_distance:
+			min_distance = distance_from_char
+			min_distance_char = character
+	return min_distance_char
 
 func _on_MovementTimer_timer_timeout():
 	if dragging:
