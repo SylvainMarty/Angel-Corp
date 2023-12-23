@@ -20,14 +20,14 @@ func init_random_enemies(origin_position: Vector2):
 		spawn_enemy_at_random_around_position(origin_position)
 
 func spawn_extra_items_with_weighted_probabilities(origin_position: Vector2):
-	# 80% to spawn a new enemy, 15% chance to spawn two new enemies, 5% chance to spawn 3 enemies
-	for x in range(0, weighted_rng(80.0, 1, 15.0, 2, 3)):
+	# 80% to spawn a 2 enemy, 15% chance to spawn 4 enemies, 5% chance to spawn 6 enemies
+	for x in range(0, weighted_rng(80.0, 2, 15.0, 4, 6)):
 		spawn_enemy_at_random_around_position(origin_position)
-	# 5% chance to spawn a new box
-	for x in range(0, weighted_rng(80.0, 1, 15.0, 0, 1)):
+	# 15% chance to spawn 1 box, 5% chance to spawn 2 boxes
+	for x in range(0, weighted_rng(80.0, 0, 15.0, 1, 2)):
 		spawn_box_item_at_random_around_position(origin_position, true)
-	# 2.5% chance to spawn a new character to protect
-	for x in range(0, weighted_rng(95.0, 0, 2.5, 0, 1)):
+	# 5% chance to spawn a new character to protect
+	for x in range(0, weighted_rng(80.0, 0, 15.0, 0, 1)):
 		spawn_character_at_random_around_position(origin_position)
 
 func weighted_rng(common_threshold: float, common_val, uncommon_threshold: float,

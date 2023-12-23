@@ -8,7 +8,7 @@ signal money_changed(money: int)
 const INIT_REMAINING_HEALTH = 0
 const INIT_REMAINING_CHARACTERS = 0
 const INIT_KILL_COUNT = 0
-const INIT_MONEY = 20000
+const INIT_MONEY = 0
 
 var remaining_health := 0
 var remaining_characters := 0
