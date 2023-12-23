@@ -65,7 +65,7 @@ label_settings = SubResource("LabelSettings_km4qp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Title2" type="Label" parent="StartMenu/StartMenuScreen"]
+[node name="Onboarding" type="Label" parent="StartMenu/StartMenuScreen"]
 offset_left = 384.0
 offset_top = 288.0
 offset_right = 896.0
@@ -78,7 +78,7 @@ You have been hired for a very, very, very simple job: protect your protégés a
 By entering Angel Corp business, you gained a convenient power: you can now use your mouse to lift objects.
 Use this power to protect your protegés.
 
-PS: don't blow it up like you predecessor...
+PS: don't blow it up like your predecessor...
 "
 label_settings = SubResource("LabelSettings_b2kav")
 autowrap_mode = 3
