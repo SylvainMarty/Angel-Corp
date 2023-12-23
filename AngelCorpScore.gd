@@ -38,6 +38,10 @@ func set_remaining_characters(new_remaining_characters):
 	remaining_characters = new_remaining_characters
 	remaining_characters_changed.emit(remaining_characters)
 
+func increment_remaining_characters():
+	remaining_characters = remaining_characters + 1
+	remaining_characters_changed.emit(remaining_characters)
+
 func decrement_remaining_characters():
 	remaining_characters = max(remaining_characters - 1, 0)
 	remaining_characters_changed.emit(remaining_characters)

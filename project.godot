@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 [autoload]
 
 AngelCorpScore="*res://AngelCorpScore.gd"
+SpawnManager="*res://SpawnManager.gd"
 
 [display]
 
