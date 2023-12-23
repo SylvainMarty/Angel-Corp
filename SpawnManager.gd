@@ -76,3 +76,9 @@ func get_random_offset(offset_factor: float):
 
 func random_positive_or_negative():
 	return [1, -1][randi() % 2]
+
+func get_characters_nodes() -> Array[Node]:
+	return get_tree().get_nodes_in_group("character")
+
+func get_enemies_nodes() -> Array[Node]:
+	return get_tree().get_nodes_in_group("enemy")

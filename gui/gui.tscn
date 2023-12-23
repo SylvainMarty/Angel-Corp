@@ -59,10 +59,10 @@ process_mode = 3
 script = ExtResource("2_3u3j3")
 gui = NodePath("..")
 
-[node name="HUD" type="Node2D" parent="." node_paths=PackedStringArray("remaining_health_label", "remaining_char_count_label", "kill_count_label", "money_label")]
+[node name="HUD" type="Node2D" parent="." node_paths=PackedStringArray("remaining_characters_count_label", "total_char_count_label", "kill_count_label", "money_label")]
 script = ExtResource("3_kjipl")
-remaining_health_label = NodePath("CharacterHUD/RemainingCharactersCount")
-remaining_char_count_label = NodePath("RemainingHealthHUD/RemainingHealth")
+remaining_characters_count_label = NodePath("RemainingHealthHUD/RemainingCharacterCount")
+total_char_count_label = NodePath("CharacterHUD/TotalCharactersCount")
 kill_count_label = NodePath("KillCountHUD/KillCount")
 money_label = NodePath("MoneyHUD/Money")
 
@@ -75,7 +75,7 @@ offset_right = 152.0
 offset_bottom = 48.0
 color = Color(0, 0, 0, 0.694118)
 
-[node name="RemainingCharactersCount" type="Label" parent="HUD/CharacterHUD"]
+[node name="TotalCharactersCount" type="Label" parent="HUD/CharacterHUD"]
 offset_left = 48.0
 offset_top = 16.0
 offset_right = 144.0
@@ -101,7 +101,7 @@ offset_right = 152.0
 offset_bottom = 96.0
 color = Color(0, 0, 0, 0.694118)
 
-[node name="RemainingHealth" type="Label" parent="HUD/RemainingHealthHUD"]
+[node name="RemainingCharacterCount" type="Label" parent="HUD/RemainingHealthHUD"]
 offset_left = 48.0
 offset_top = 64.0
 offset_right = 144.0
@@ -302,7 +302,7 @@ visible = false
 
 [node name="GameStats" parent="EndGameScreen" instance=ExtResource("7_5d1hg")]
 position = Vector2(344, 368)
-show_remaining_health = false
+show_remaining_char_count = false
 
 [node name="Title" type="Label" parent="EndGameScreen"]
 offset_left = 384.0

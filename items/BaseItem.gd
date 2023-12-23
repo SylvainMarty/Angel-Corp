@@ -25,13 +25,16 @@ func add_damage(damages: int, damage_location: Vector2, damage_angle: float):
 	var abs_damages = abs(damages)
 	stats.health_points -= abs_damages
 	spawn_damage_number(abs_damages, damage_location, damage_angle)
-	print("["+name+"] Health changed: %s" % stats.health_points)
+	#print("["+name+"] Health changed: %s" % stats.health_points)
 	item_hit.emit(abs_damages)
 
 func get_stats() -> Stats:
 	return stats
 
 func move_item_and_collide(delta, target_position: Vector2):
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	rotation = 0.0
 	var collision = move_and_collide(mouse_spring_constant * target_position * delta)
 	if collision and collision.get_collider() is BaseItem:
 		collision_sound_player.play()
@@ -64,6 +67,8 @@ func play_dying_animation_and_queue_free():
 		return
 	ending = true
 	print("["+name+"] died")
+	remove_from_group("character")
+	remove_from_group("enemy")
 	item_died.emit(stats.get_random_dropped_money())
 	# Dying fade-out
 	var tween = get_tree().create_tween()

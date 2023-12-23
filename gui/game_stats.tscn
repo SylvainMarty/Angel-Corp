@@ -8,10 +8,10 @@
 font = ExtResource("2_odxtn")
 font_size = 20
 
-[node name="GameStats" type="Node2D" node_paths=PackedStringArray("remaining_health_label", "remaining_char_count_label", "kill_count_label", "money_label")]
+[node name="GameStats" type="Node2D" node_paths=PackedStringArray("remaining_char_count_label", "total_char_count_label", "kill_count_label", "money_label")]
 script = ExtResource("1_gb8qj")
-remaining_health_label = NodePath("RemainingHealth/RemainingHealth")
-remaining_char_count_label = NodePath("RemainingCharacters/RemainingCharCount")
+remaining_char_count_label = NodePath("RemainingHealth/RemainingCharCount")
+total_char_count_label = NodePath("RemainingCharacters/TotalCharCount")
 kill_count_label = NodePath("KillCount/KillCount")
 money_label = NodePath("Money/Money")
 
@@ -24,7 +24,7 @@ texture = ExtResource("1_gbaun")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
 
-[node name="RemainingHealth" type="Label" parent="RemainingHealth"]
+[node name="RemainingCharCount" type="Label" parent="RemainingHealth"]
 offset_top = 28.0
 offset_right = 80.0
 offset_bottom = 60.0
@@ -43,7 +43,7 @@ texture = ExtResource("1_gbaun")
 region_enabled = true
 region_rect = Rect2(0, 128, 128, 128)
 
-[node name="RemainingCharCount" type="Label" parent="RemainingCharacters"]
+[node name="TotalCharCount" type="Label" parent="RemainingCharacters"]
 offset_left = 128.0
 offset_top = 28.0
 offset_right = 208.0

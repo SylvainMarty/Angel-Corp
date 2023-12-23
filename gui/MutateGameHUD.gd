@@ -32,12 +32,16 @@ func _on_add_box_button_pressed():
 
 func spawn_box_item_at_random_position_around_character():
 	SpawnManager.spawn_box_item_at_random_around_position(
-			get_tree().get_nodes_in_group("character")[0].position, true)
+			SpawnManager.get_characters_nodes()[0].position, true)
 
 func _on_add_health_button_pressed():
 	if AngelCorpScore.money - add_health_cost < 0:
 		return
-	AngelCorpScore.increment_remaining_health(add_health_qty)
+	var characters = SpawnManager.get_characters_nodes()
+	if characters.is_empty():
+		return
+	SpawnManager.spawn_character_at_random_around_position(
+			SpawnManager.get_characters_nodes()[0].position)
 	AngelCorpScore.decrement_money(add_health_cost)
 	set_health_cost(add_health_cost * add_health_cost_multiplier)
 

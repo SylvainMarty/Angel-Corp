@@ -14,7 +14,7 @@ func _ready():
 	animated_sprite.play()
 
 func find_closest_target() -> Node2D:
-	var characters: Array = get_tree().get_nodes_in_group("character")
+	var characters: Array = SpawnManager.get_characters_nodes()
 	if characters.is_empty():
 		return null
 	var min_distance = characters[0].position.distance_to(position)
