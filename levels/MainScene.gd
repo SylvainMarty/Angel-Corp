@@ -9,11 +9,16 @@ func _ready():
 	SpawnManager.init_random_enemies(char_position)
 	init_player_score()
 	init_timer_listener()
+	init_spawn_manager_listeners()
 
 func init_timer_listener():
 	timer.timeout.connect(_on_timer_tick_rng)
 	timer.autostart = true
 	timer.start()
+
+func init_spawn_manager_listeners():
+	SpawnManager.character_spawned.connect(_on_character_spawned)
+	SpawnManager.enemy_spawned.connect(_on_enemy_spawned)
 
 func _on_timer_tick_rng():
 	SpawnManager.spawn_extra_items_with_weighted_probabilities(char_position)
@@ -24,11 +29,10 @@ func init_player_score():
 	var characters = get_tree().get_nodes_in_group("character")
 	var remaining_health = 0
 	var remaining_characters = 0
-	for chararacter in characters:
-		remaining_health += chararacter.get_stats().health_points
-		chararacter.character_spawned.connect(_on_character_spawned)
-		chararacter.item_hit.connect(_on_character_hit)
-		chararacter.item_died.connect(_on_character_died)
+	for character in characters:
+		remaining_health += character.get_stats().health_points
+		character.item_hit.connect(_on_character_hit)
+		character.item_died.connect(_on_character_died)
 		remaining_characters += 1
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enem in enemies:
@@ -37,8 +41,13 @@ func init_player_score():
 	AngelCorpScore.set_remaining_characters(remaining_characters)
 
 func _on_character_spawned(character: Character):
+	character.item_hit.connect(_on_character_hit)
+	character.item_died.connect(_on_character_died)
 	AngelCorpScore.increment_remaining_health(character.get_stats().health_points)
 	AngelCorpScore.increment_remaining_characters()
+
+func _on_enemy_spawned(enemy: Enemy):
+	enemy.item_died.connect(_on_enemy_died)
 
 func _on_character_hit(damages):
 	AngelCorpScore.decrement_remaining_health(damages)

@@ -1,5 +1,8 @@
 extends Node
 
+signal character_spawned(character: Character)
+signal enemy_spawned(enemy: Enemy)
+
 const SPAWN_MAX_OFFSET := 100
 const SPAWN_MIN_OFFSET := 0
 
@@ -47,10 +50,12 @@ func spawn_box_item_at_random_around_position(origin_position: Vector2, play_sou
 	spawn_at_random_around_position(box_item_template, box_item_size, origin_position, 0.75, play_sound)
 
 func spawn_enemy_at_random_around_position(origin_position: Vector2):
-	spawn_at_random_around_position(enemy_template, enemy_size, origin_position, 2.0)
+	var enemy = spawn_at_random_around_position(enemy_template, enemy_size, origin_position, 2.0)
+	enemy_spawned.emit(enemy)
 
 func spawn_character_at_random_around_position(origin_position: Vector2):
-	spawn_at_random_around_position(character_template, character_size, origin_position, 1.25)
+	var character = spawn_at_random_around_position(character_template, character_size, origin_position, 1.25)
+	character_spawned.emit(character)
 
 func spawn_at_random_around_position(template, item_size: Vector2, origin_position: Vector2,
 		offset_factor: float = 1.0, play_sound: bool = false):
@@ -63,6 +68,7 @@ func spawn_at_random_around_position(template, item_size: Vector2, origin_positi
 	new_spawn.position.x += random_positive_or_negative() * (item_size.x + random_offset_x)
 	new_spawn.position.y += random_positive_or_negative() * (item_size.y - random_offset_y)
 	get_tree().current_scene.add_child(new_spawn, true)
+	return new_spawn
 
 func get_random_offset(offset_factor: float):
 	var max_offset = roundi(SPAWN_MAX_OFFSET * offset_factor)

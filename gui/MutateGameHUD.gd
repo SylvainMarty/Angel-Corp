@@ -4,10 +4,10 @@ const BOX_ITEM_SPAWN_MAX_OFFSET = 75
 const BOX_ITEM_SPAWN_MIN_OFFSET = -75
 
 @export var add_box_cost = 1000;
-@export var add_box_cost_multiplier = 1.5;
+@export var add_box_cost_multiplier = 1.2;
 @export var add_health_qty = 250;
-@export var add_health_cost = 10000;
-@export var add_health_cost_multiplier = 1.5;
+@export var add_health_cost = 1000;
+@export var add_health_cost_multiplier = 1.2;
 @export var box_item_size = Vector2(32, 32)
 
 @onready var add_box_cost_btn = $AddBoxButton
@@ -32,8 +32,7 @@ func _on_add_box_button_pressed():
 
 func spawn_box_item_at_random_position_around_character():
 	SpawnManager.spawn_box_item_at_random_around_position(
-		get_tree().get_nodes_in_group("character")[0].position, true
-	)
+			get_tree().get_nodes_in_group("character")[0].position, true)
 
 func _on_add_health_button_pressed():
 	if AngelCorpScore.money - add_health_cost < 0:
