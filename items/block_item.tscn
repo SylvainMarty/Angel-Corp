@@ -66,4 +66,4 @@ shape = SubResource("RectangleShape2D_oj4cs")
 
 [node name="BlockSpawnedSoundPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource("9_dm1hw")
-volume_db = -15.0
+volume_db = -8.0

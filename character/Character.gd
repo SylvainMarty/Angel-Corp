@@ -11,5 +11,4 @@ func _ready():
 	item_hit.connect(_on_character_hurt)
 
 func _on_character_hurt(_damages: int):
-	print("_on_character_hurt")
 	character_hit_sound_player.play()

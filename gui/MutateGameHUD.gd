@@ -32,7 +32,7 @@ func _on_add_box_button_pressed():
 
 func spawn_box_item_at_random_position_around_character():
 	SpawnManager.spawn_box_item_at_random_around_position(
-		get_tree().get_nodes_in_group("character")[0].position
+		get_tree().get_nodes_in_group("character")[0].position, true
 	)
 
 func _on_add_health_button_pressed():
