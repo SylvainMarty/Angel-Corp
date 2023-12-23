@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nhxhdtaiu4mg"]
+
+[ext_resource type="AudioStream" uid="uid://cn7etcnapmlbr" path="res://sounds/bonk-sound.wav" id="1_lh7lr"]
+
+[node name="CollisionSoundPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_lh7lr")

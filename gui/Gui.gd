@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name GUI
 
+@export var enemy_added_sound_player: AudioStreamPlayer
+
 @onready var pause_exec_node: Node = $PauseExecNode
 @onready var hud_screen: Node2D = $HUD
 @onready var pause_menu_screen: Node2D = $PauseMenuScreen
@@ -33,6 +35,7 @@ func start_menu():
 	hud_screen.hide()
 
 func game_over():
+	enemy_added_sound_player.play()
 	pause_exec_node.disabled = true
 	get_tree().paused = true
 	end_game_screen.show()

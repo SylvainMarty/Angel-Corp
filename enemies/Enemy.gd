@@ -5,6 +5,7 @@ class_name Enemy
 @export var character_attack_impulse: float = 100.0
 @export var item_push_impulse: float = 10.0
 @export var item_push_back_impulse: float = 0.2
+@export var enemy_attack_sound_player: AudioStreamPlayer2D
 
 @onready var projectile_template = preload("res://projectiles/projectile.tscn")
 
@@ -28,7 +29,7 @@ func advance_to_target():
 	# https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_introduction_2d.html
 	# https://github.com/sjharb/NavigationServer2DTest/blob/main/player.gd
 	var next_position = (closest_character.get_position() - position) * movement_speed
-	print("Enemy move to: ", str(next_position))
+	#print("Enemy move to: ", str(next_position))
 	var collision = move_and_collide(next_position)
 	if collision:
 		play_attack_animation()
@@ -48,6 +49,7 @@ func advance_to_target():
 		apply_impulse(-collision.get_travel() * item_push_back_impulse)
 
 func play_attack_animation():
+	enemy_attack_sound_player.play()
 	$AnimatedSprite2D.play("attack")
 
 #func _on_ShootingTimer_timer_timeout():

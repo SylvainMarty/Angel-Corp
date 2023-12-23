@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0c0flsaruy18"]
+[gd_scene load_steps=14 format=3 uid="uid://d0c0flsaruy18"]
 
 [ext_resource type="Script" path="res://gui/Gui.gd" id="1_q4xcg"]
 [ext_resource type="Script" path="res://gui/PauseExecNode.gd" id="2_3u3j3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cpdm0175meuq4" path="res://gui/base_menu_screen.tscn" id="4_r2jkg"]
 [ext_resource type="Texture2D" uid="uid://cydgqkca4f6nr" path="res://textures/tilemap_compressed_texture_2d.tres" id="4_vqisw"]
 [ext_resource type="PackedScene" uid="uid://dr4v32bjm6erp" path="res://gui/game_stats.tscn" id="7_5d1hg"]
+[ext_resource type="AudioStream" uid="uid://dh0d6msptdqy8" path="res://sounds/game-over-sound.wav" id="10_ah3fr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a2f2h"]
 font = ExtResource("3_dptg1")
@@ -20,8 +21,9 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_1wsyn"]
 font = ExtResource("3_dptg1")
 
-[node name="GUI" type="CanvasLayer"]
+[node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("enemy_added_sound_player")]
 script = ExtResource("1_q4xcg")
+enemy_added_sound_player = NodePath("EndGameScreen/GameOverSoundPlayer")
 
 [node name="PauseExecNode" type="Node" parent="." node_paths=PackedStringArray("gui")]
 process_mode = 3
@@ -229,6 +231,9 @@ offset_bottom = 560.0
 size_flags_horizontal = 0
 theme = ExtResource("3_s0kc2")
 text = "Quit game"
+
+[node name="GameOverSoundPlayer" type="AudioStreamPlayer" parent="EndGameScreen"]
+stream = ExtResource("10_ah3fr")
 
 [connection signal="pressed" from="PauseMenuScreen/ResumeGameBtn" to="." method="_on_resume_game_btn_pressed"]
 [connection signal="pressed" from="PauseMenuScreen/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]

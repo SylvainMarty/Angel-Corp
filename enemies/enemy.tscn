@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://8t25ak3vjkfv"]
+[gd_scene load_steps=13 format=3 uid="uid://8t25ak3vjkfv"]
 
 [ext_resource type="PackedScene" uid="uid://qn34pwjj8r5r" path="res://items/base_item.tscn" id="1_38vlj"]
 [ext_resource type="Script" path="res://enemies/Enemy.gd" id="2_qxsap"]
 [ext_resource type="Resource" uid="uid://c2j000hchspwp" path="res://enemies/enemy_stats.tres" id="2_rvmfv"]
 [ext_resource type="Texture2D" uid="uid://d0p7lx0akrbmc" path="res://textures/tilemap.png" id="4_u4wrn"]
+[ext_resource type="AudioStream" uid="uid://dq80u7tdrjqop" path="res://sounds/enemy-attack-sound.wav" id="5_yh87a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj4pd"]
 atlas = ExtResource("4_u4wrn")
@@ -56,12 +57,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1yuo"]
 size = Vector2(40, 40)
 
-[node name="Enemy" groups=["enemy"] instance=ExtResource("1_38vlj")]
+[node name="Enemy" node_paths=PackedStringArray("enemy_attack_sound_player") groups=["enemy"] instance=ExtResource("1_38vlj")]
 script = ExtResource("2_qxsap")
 movement_speed = 0.1
 character_attack_impulse = 100.0
 item_push_impulse = 10.0
 item_push_back_impulse = 0.2
+enemy_attack_sound_player = NodePath("AttackSoundPlayer")
 initial_stats = ExtResource("2_rvmfv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
@@ -79,6 +81,10 @@ autostart = true
 [node name="MovementTimer" type="Timer" parent="." index="3"]
 wait_time = 2.0
 autostart = true
+
+[node name="AttackSoundPlayer" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("5_yh87a")
+volume_db = 2.0
 
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_ShootingTimer_timer_timeout"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timer_timeout"]

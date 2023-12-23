@@ -8,10 +8,12 @@ signal projectile_hit(damages_avoided: int)
 @export var mouse_spring_constant := 50.0
 @export var inertia_factor := 1000.0
 @export var initial_stats: Stats
+@export var item_added_sound_player: AudioStreamPlayer2D
+@export var collision_sound_player: AudioStreamPlayer2D
+@export var item_died_sound_player: AudioStreamPlayer2D
 
 @onready var stats: Stats = initial_stats.duplicate()
 @onready var damage_number_template = preload("res://items/DamageNumber.tscn")
-@onready var collision_sound_player = $CollisionSoundPlayer
 
 const DAMAGE_NUMBER_HEIGHT := 200.0
 const DAMAGE_NUMBER_SPREAD := 50.0
@@ -53,10 +55,23 @@ func _process(delta):
 	if dragging:
 		move_item_and_collide(delta, get_local_mouse_position())
 	if stats.health_points <= 0:
-		print("["+name+"] died")
-		item_died.emit(stats.get_random_dropped_money())
-		# TODO: add animation
-		queue_free()
+		play_dying_animation_and_queue_free()
+
+## Mutex used to trigger the dying sound and animation only once
+var ending: bool = false
+func play_dying_animation_and_queue_free():
+	if ending == true:
+		return
+	ending = true
+	print("["+name+"] died")
+	item_died.emit(stats.get_random_dropped_money())
+	# Dying fade-out
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, .38).set_trans(Tween.TRANS_SINE)
+	# Dying sound
+	item_died_sound_player.play()
+	await item_died_sound_player.finished
+	queue_free()
 
 func set_dragging(is_dragging: bool):
 	dragging = is_dragging
