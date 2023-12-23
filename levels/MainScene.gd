@@ -3,6 +3,8 @@ extends Node2D
 @onready var gui: GUI = $GUI
 
 func _ready():
+	# Init score values & triggers signals
+	AngelCorpScore.init()
 	var characters = get_tree().get_nodes_in_group("character")
 	var remaining_health = 0
 	var remaining_characters = 0
@@ -16,8 +18,6 @@ func _ready():
 		enem.item_died.connect(_on_enemy_died)
 	AngelCorpScore.set_remaining_health(remaining_health)
 	AngelCorpScore.set_remaining_characters(remaining_characters)
-	AngelCorpScore.set_kill_count(0)
-	AngelCorpScore.set_money(0)
 
 func _on_character_hit(damages):
 	AngelCorpScore.decrement_remaining_health(damages)

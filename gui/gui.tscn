@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0c0flsaruy18"]
+[gd_scene load_steps=21 format=3 uid="uid://d0c0flsaruy18"]
 
 [ext_resource type="Script" path="res://gui/Gui.gd" id="1_q4xcg"]
 [ext_resource type="Script" path="res://gui/PauseExecNode.gd" id="2_3u3j3"]
@@ -8,8 +8,37 @@
 [ext_resource type="Theme" uid="uid://3142j4y0cfsc" path="res://gui/theme/gui_theme.tres" id="3_s0kc2"]
 [ext_resource type="PackedScene" uid="uid://cpdm0175meuq4" path="res://gui/base_menu_screen.tscn" id="4_r2jkg"]
 [ext_resource type="Texture2D" uid="uid://cydgqkca4f6nr" path="res://textures/tilemap_compressed_texture_2d.tres" id="4_vqisw"]
+[ext_resource type="Script" path="res://gui/MutateGameHUD.gd" id="6_4icwx"]
 [ext_resource type="PackedScene" uid="uid://dr4v32bjm6erp" path="res://gui/game_stats.tscn" id="7_5d1hg"]
+[ext_resource type="Texture2D" uid="uid://d0p7lx0akrbmc" path="res://textures/tilemap.png" id="7_xltk8"]
 [ext_resource type="AudioStream" uid="uid://dh0d6msptdqy8" path="res://sounds/game-over-sound.wav" id="10_ah3fr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taatn"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 0.694118)
+
+[sub_resource type="Theme" id="Theme_mljue"]
+Button/font_sizes/font_size = 53
+Button/fonts/font = ExtResource("3_dptg1")
+Button/styles/normal = SubResource("StyleBoxFlat_taatn")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmcp6"]
+atlas = ExtResource("7_xltk8")
+region = Rect2(512, 0, 128, 128)
+margin = Rect2(25, 25, 50, 50)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8txa"]
+line_spacing = 0.0
+font = ExtResource("3_dptg1")
+font_size = 38
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k4ps"]
+atlas = ExtResource("7_xltk8")
+region = Rect2(0, 0, 128, 128)
+margin = Rect2(25, 25, 50, 50)
 
 [sub_resource type="LabelSettings" id="LabelSettings_a2f2h"]
 font = ExtResource("3_dptg1")
@@ -42,20 +71,19 @@ money_label = NodePath("MoneyHUD/Money")
 [node name="Background" type="ColorRect" parent="HUD/CharacterHUD"]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 128.0
+offset_right = 152.0
 offset_bottom = 48.0
 color = Color(0, 0, 0, 0.694118)
 
 [node name="RemainingCharactersCount" type="Label" parent="HUD/CharacterHUD"]
-offset_left = 80.0
+offset_left = 48.0
 offset_top = 16.0
-offset_right = 120.0
+offset_right = 144.0
 offset_bottom = 40.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSprite" type="Sprite2D" parent="HUD/CharacterHUD"]
 position = Vector2(28, 28)
@@ -69,20 +97,19 @@ region_rect = Rect2(0, 128, 128, 128)
 [node name="Background" type="ColorRect" parent="HUD/RemainingHealthHUD"]
 offset_left = 8.0
 offset_top = 56.0
-offset_right = 128.0
+offset_right = 152.0
 offset_bottom = 96.0
 color = Color(0, 0, 0, 0.694118)
 
 [node name="RemainingHealth" type="Label" parent="HUD/RemainingHealthHUD"]
-offset_left = 80.0
+offset_left = 48.0
 offset_top = 64.0
-offset_right = 120.0
+offset_right = 144.0
 offset_bottom = 88.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="HeartSprite" type="Sprite2D" parent="HUD/RemainingHealthHUD"]
 position = Vector2(28, 76)
@@ -96,20 +123,19 @@ region_rect = Rect2(0, 0, 128, 128)
 [node name="Background" type="ColorRect" parent="HUD/KillCountHUD"]
 offset_left = 8.0
 offset_top = 104.0
-offset_right = 128.0
+offset_right = 152.0
 offset_bottom = 144.0
 color = Color(0, 0, 0, 0.694118)
 
 [node name="KillCount" type="Label" parent="HUD/KillCountHUD"]
-offset_left = 80.0
+offset_left = 48.0
 offset_top = 112.0
-offset_right = 120.0
+offset_right = 144.0
 offset_bottom = 136.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="SkullSprite" type="Sprite2D" parent="HUD/KillCountHUD"]
 position = Vector2(28, 124)
@@ -123,20 +149,19 @@ region_rect = Rect2(512, 320, 128, 128)
 [node name="Background" type="ColorRect" parent="HUD/MoneyHUD"]
 offset_left = 8.0
 offset_top = 152.0
-offset_right = 128.0
+offset_right = 152.0
 offset_bottom = 192.0
 color = Color(0, 0, 0, 0.694118)
 
 [node name="Money" type="Label" parent="HUD/MoneyHUD"]
-offset_left = 80.0
+offset_left = 48.0
 offset_top = 160.0
-offset_right = 120.0
+offset_right = 144.0
 offset_bottom = 184.0
 text = "123"
 label_settings = ExtResource("3_lvn23")
 horizontal_alignment = 2
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="MoneySprite" type="Sprite2D" parent="HUD/MoneyHUD"]
 position = Vector2(28, 172)
@@ -144,6 +169,93 @@ scale = Vector2(0.125654, 0.125654)
 texture = ExtResource("4_vqisw")
 region_enabled = true
 region_rect = Rect2(512, 128, 192, 191.647)
+
+[node name="MutateGameHUD" type="Node2D" parent="HUD"]
+script = ExtResource("6_4icwx")
+
+[node name="AddBoxButton" type="Button" parent="HUD/MutateGameHUD"]
+offset_left = 448.0
+offset_top = 691.0
+offset_right = 576.0
+offset_bottom = 768.0
+theme = SubResource("Theme_mljue")
+icon = SubResource("AtlasTexture_tmcp6")
+icon_alignment = 2
+expand_icon = true
+
+[node name="PlusLabel" type="Label" parent="HUD/MutateGameHUD/AddBoxButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.311688
+anchor_bottom = -0.012987
+offset_left = 8.0
+offset_top = 29.0
+offset_right = 48.0
+offset_bottom = 53.0
+text = "+"
+label_settings = SubResource("LabelSettings_m8txa")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CostLabel" type="Label" parent="HUD/MutateGameHUD/AddBoxButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.155844
+anchor_bottom = 0.155844
+offset_left = 8.0
+offset_top = 29.0
+offset_right = 48.0
+offset_bottom = 53.0
+text = "123"
+label_settings = ExtResource("3_lvn23")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AddHealthButton" type="Button" parent="HUD/MutateGameHUD"]
+offset_left = 704.0
+offset_top = 691.0
+offset_right = 832.0
+offset_bottom = 768.0
+theme = SubResource("Theme_mljue")
+icon = SubResource("AtlasTexture_2k4ps")
+icon_alignment = 2
+expand_icon = true
+
+[node name="PlusLabel" type="Label" parent="HUD/MutateGameHUD/AddHealthButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.5
+anchor_top = -0.311688
+anchor_right = 1.5
+anchor_bottom = -0.012987
+offset_left = -184.0
+offset_top = 29.0
+offset_right = -144.0
+offset_bottom = 53.0
+text = "+"
+label_settings = SubResource("LabelSettings_m8txa")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CostLabel" type="Label" parent="HUD/MutateGameHUD/AddHealthButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.5
+anchor_top = 0.155844
+anchor_right = 1.5
+anchor_bottom = 0.155844
+offset_left = -184.0
+offset_top = 29.0
+offset_right = -144.0
+offset_bottom = 53.0
+text = "123"
+label_settings = ExtResource("3_lvn23")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenuScreen" parent="." instance=ExtResource("4_r2jkg")]
 visible = false
@@ -235,6 +347,8 @@ text = "Quit game"
 [node name="GameOverSoundPlayer" type="AudioStreamPlayer" parent="EndGameScreen"]
 stream = ExtResource("10_ah3fr")
 
+[connection signal="pressed" from="HUD/MutateGameHUD/AddBoxButton" to="HUD/MutateGameHUD" method="_on_add_box_button_pressed"]
+[connection signal="pressed" from="HUD/MutateGameHUD/AddHealthButton" to="HUD/MutateGameHUD" method="_on_add_health_button_pressed"]
 [connection signal="pressed" from="PauseMenuScreen/ResumeGameBtn" to="." method="_on_resume_game_btn_pressed"]
 [connection signal="pressed" from="PauseMenuScreen/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]
 [connection signal="pressed" from="PauseMenuScreen/QuitGameBtn" to="." method="_on_quit_game_btn_pressed"]

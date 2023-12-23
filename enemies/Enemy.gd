@@ -7,10 +7,11 @@ class_name Enemy
 @export var item_push_back_impulse: float = 0.2
 @export var enemy_attack_sound_player: AudioStreamPlayer2D
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var projectile_template = preload("res://projectiles/projectile.tscn")
 
 func _ready():
-	$AnimatedSprite2D.play()
+	animated_sprite.play()
 
 func find_closest_target() -> Node2D:
 	var characters = get_tree().get_nodes_in_group("character")
@@ -50,7 +51,7 @@ func advance_to_target():
 
 func play_attack_animation():
 	enemy_attack_sound_player.play()
-	$AnimatedSprite2D.play("attack")
+	animated_sprite.play("attack")
 
 #func _on_ShootingTimer_timer_timeout():
 	#shoot()

@@ -5,13 +5,29 @@ signal remaining_characters_changed(remaining_characters: int)
 signal kill_count_changed(kill_count: int)
 signal money_changed(money: int)
 
+const INIT_REMAINING_HEALTH = 0
+const INIT_REMAINING_CHARACTERS = 0
+const INIT_KILL_COUNT = 0
+const INIT_MONEY = 20000
+
 var remaining_health := 0
 var remaining_characters := 0
 var kill_count := 0
 var money := 0
 
+## Inits score values & triggers signals
+func init():
+	set_remaining_health(INIT_REMAINING_HEALTH)
+	set_remaining_characters(INIT_REMAINING_CHARACTERS)
+	set_kill_count(INIT_KILL_COUNT)
+	set_money(INIT_MONEY)
+
 func set_remaining_health(new_remaining_health):
 	remaining_health = new_remaining_health
+	remaining_health_changed.emit(remaining_health)
+
+func increment_remaining_health(healing):
+	remaining_health = remaining_health + healing
 	remaining_health_changed.emit(remaining_health)
 
 func decrement_remaining_health(damages):
@@ -40,4 +56,8 @@ func set_money(new_money):
 
 func increment_money(money_to_add):
 	money += money_to_add
+	money_changed.emit(money)
+
+func decrement_money(money_to_remove):
+	money -= money_to_remove
 	money_changed.emit(money)

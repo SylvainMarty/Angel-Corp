@@ -21,4 +21,4 @@ func _on_kill_count_changed(kill_count):
 	kill_count_label.text = str(kill_count)
 
 func _on_money_changed(money):
-	money_label.text = str(money)
+	money_label.text = "$%s" % money
